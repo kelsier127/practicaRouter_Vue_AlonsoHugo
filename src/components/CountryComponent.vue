@@ -13,6 +13,7 @@ console.log(pais)
     <h2>{{ country.name }}</h2>
     <img :src="'../src/assets/images/'+country.image" alt="">
   </div>
+
 </template>
 
 <style scoped>
@@ -25,8 +26,7 @@ console.log(pais)
   width: 35%;
   padding: 20px;
   margin: 15px;
-  box-shadow: 2px 2px 4px 2px;
-  border: 2px solid black;
+  box-shadow: 2px 2px 3px 2px;
   background-color: rgb(212, 212, 212);
 }
 

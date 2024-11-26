@@ -21,10 +21,5 @@ console.log(countryData)
 </template>
 
 <style scoped>
-.nav-menu{
-  margin: 0;
-  display: flex;
-  justify-content: space-around;
-  background-color: aqua;
-}
+
 </style>

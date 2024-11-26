@@ -1,4 +1,6 @@
 <script setup>
+console.log("Has cargado 'HomeView.vue'")
+
 import data from '@/assets/data.json';
 import CountryComponent from '../components/CountryComponent.vue'
 
