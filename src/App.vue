@@ -13,7 +13,7 @@ console.log(countryData)
   <header>
     <nav id="nav">
       <RouterLink to="/">Home</RouterLink>
-      <RouterLink v-for="(country,index) in countryData.destinations" :key="index" :to="'../country/'+country.id"> {{ country.name }} </RouterLink>
+      <RouterLink v-for="(country,index) in countryData.destinations" :key="index" :to="'../../../../country/'+country.id"> {{ country.name }} </RouterLink>
     </nav>
   </header>
 

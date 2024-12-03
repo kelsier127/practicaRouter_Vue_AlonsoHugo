@@ -2,7 +2,6 @@
 console.log("Has cargado 'CountryView.vue'")
 import { ref,watch } from 'vue'
 import { useRoute } from 'vue-router'
-import ExperienceComponent from '../components/ExperienceComponent.vue'
 import data from '@/assets/data.json';
 
 let pathImagenes = '../src/assets/images/';
@@ -30,6 +29,7 @@ watch(
 <template>
   <section>
     <h1>{{ country.name }}</h1>
+    <h1> Este es el route: {{ route.params.id }}</h1>
     <article>
       <img class="imagenPrincipal" :src="pathImagenes+country.image" :alt="'Imagen de '+ country.image">
       <p class="descripcion">{{ country.description }}</p>
@@ -38,10 +38,18 @@ watch(
 
   <section>
     <h1>Experiences on {{ country.name }}</h1>
-    <ExperienceComponent v-for="(experiencia, index) in country.experiences" :key="index"
-      :experiencia="experiencia"
-      :id="index"
-    />
+    <div class="experiences">
+      <RouterLink v-for="(experience,index) in country.experiences" :key="experience" :to="'/country/'+country.id+'/experience/'+index">
+        <div class="experienceContainer">
+          <p>{{ experience.name }}</p>
+          <img :src="pathImagenes+experience.image" alt="">
+        </div>
+      </RouterLink>
+    </div>
+  </section>
+
+  <section>
+    <RouterView/>
   </section>
 </template>
 
@@ -67,6 +75,25 @@ article{
 .imagenPrincipal{
   border-radius: 10px;
   border: 2px solid black;
+}
+
+img{
+  border-radius: 10px;
+}
+
+.experienceContainer{
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  border: 1px solid gray;
+  background-color: rgb(153, 153, 153);
+  padding: 15px;
+  border-radius: 8px;
+}
+
+.experiences{
+  display: flex;
+  justify-content: space-around;
 }
 </style>
 
