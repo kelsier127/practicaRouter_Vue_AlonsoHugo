@@ -57,7 +57,8 @@ watch(
   display: flex;
   justify-content: center;
   align-items: center;
-
+  text-align: justify;
+  text-justify: inter-word;
 }
 
 .experienceDescription{
