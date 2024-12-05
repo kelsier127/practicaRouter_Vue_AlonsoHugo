@@ -11,7 +11,7 @@ console.log(pais)
 <template>
   <div class="paisComponent">
     <h2>{{ country.name }}</h2>
-    <img :src="'../src/assets/images/'+country.image" alt="">
+    <img :src="'/images/'+country.image" alt="">
   </div>
 
 </template>

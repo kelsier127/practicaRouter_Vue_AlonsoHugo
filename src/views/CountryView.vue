@@ -4,7 +4,7 @@ import { ref,watch } from 'vue'
 import { useRoute } from 'vue-router'
 import data from '@/assets/data.json';
 
-let pathImagenes = '../src/assets/images/';
+let pathImagenes = '/images/';
 
 const route = useRoute()
 
@@ -29,7 +29,6 @@ watch(
 <template>
   <section>
     <h1>{{ country.name }}</h1>
-    <h1> Este es el route: {{ route.params.id }}</h1>
     <article>
       <img class="imagenPrincipal" :src="pathImagenes+country.image" :alt="'Imagen de '+ country.image">
       <p class="descripcion">{{ country.description }}</p>
