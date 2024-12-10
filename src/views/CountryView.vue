@@ -2,6 +2,7 @@
 console.log("Has cargado 'CountryView.vue'")
 import { useRoute,useRouter } from 'vue-router'
 import data from '@/assets/data.json';
+import { computed } from 'vue';
 
 let pathImagenes = '/images/';
 
@@ -12,17 +13,23 @@ const props = defineProps({
   id: String
 })
 
-let country = data.destinations[props.id]
 
-console.log(data.destinations[props.id])
-console.log(props.id)
+let country = computed(()=> {
+  let destination;
+  for(let i in data.destinations){
+    if(data.destinations[i].id == props.id){
+      destination = data.destinations[i]
+    }
+  }
+  return destination
+} )
 
 
 
 const goBack = ()=>{
   console.log(route.fullPath)
   if(route.fullPath.includes('experience')){
-    router.push(`/country/${props.id}`);
+    router.push(`/country/${country.value.id}`);
   }else{
     router.push(`/`);
   }

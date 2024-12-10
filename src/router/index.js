@@ -15,7 +15,7 @@ const router = createRouter({
       path: '/country/:id',
       name: 'Country',
       component: CountryView,
-      props: route=>({ id:route.params.id}),
+      props: route => ({ id:route.params.id }),
       children:[{
         path:'experience/:expId',
         component:ExperienceView,
