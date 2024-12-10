@@ -7,15 +7,12 @@ let pais = props.country
 
 console.log(pais)
 </script>
-
 <template>
-  <div class="paisComponent">
-    <h2>{{ country.name }}</h2>
-    <img :src="'/images/'+country.image" alt="">
-  </div>
-
+  <RouterLink :to="'/country/'+country.id" class="paisComponent">
+      <h2>{{ country.name }}</h2>
+      <img :src="'/images/'+country.image" alt="">
+  </RouterLink>
 </template>
-
 <style scoped>
 .paisComponent{
   display: flex;
