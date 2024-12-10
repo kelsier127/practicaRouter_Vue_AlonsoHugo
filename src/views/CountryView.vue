@@ -1,34 +1,39 @@
 <script setup>
 console.log("Has cargado 'CountryView.vue'")
-import { ref,watch } from 'vue'
-import { useRoute } from 'vue-router'
+import { useRoute,useRouter } from 'vue-router'
 import data from '@/assets/data.json';
 
 let pathImagenes = '/images/';
 
 const route = useRoute()
+const router = useRouter()
 
-const id = ref(route.params.id - 1)
+const props = defineProps({
+  id: String
+})
 
-let country = data.destinations[id.value]
+let country = data.destinations[props.id]
 
-console.log(data.destinations[id.value])
-console.log(route.params.id)
+console.log(data.destinations[props.id])
+console.log(props.id)
 
-watch(
-  () => route.params.id,
-  (newId) => {
-    id.value = newId - 1
-    country = data.destinations[id.value]
-    console.log(data.destinations[id.value])
+
+
+const goBack = ()=>{
+  console.log(route.fullPath)
+  if(route.fullPath.includes('experience')){
+    router.push(`/country/${props.id}`);
+  }else{
+    router.push(`/`);
   }
-)
+}
 
 </script>
 
 <template>
   <section>
     <h1>{{ country.name }}</h1>
+    <button @click="goBack"> Go back </button>
     <article>
       <img class="imagenPrincipal" :src="pathImagenes+country.image" :alt="'Imagen de '+ country.image">
       <p class="descripcion">{{ country.description }}</p>
@@ -47,9 +52,9 @@ watch(
     </div>
   </section>
 
-  <section>
+  <div>
     <RouterView/>
-  </section>
+  </div>
 </template>
 
 <style>
@@ -67,6 +72,11 @@ article{
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+button{
+  width: 100px;
+  margin: 15px;
 }
 .descripcion{
   padding-left: 60px;

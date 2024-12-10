@@ -4,6 +4,7 @@ import { ref,watch } from 'vue'
 import { useRoute } from 'vue-router';
 
 
+
 const route = useRoute()
 
 const id = ref(route.params.id - 1)
@@ -36,11 +37,10 @@ watch(
 )
 
 
-
 </script>
 
 <template>
-  <div>
+  <div class="experienceContainer">
     <h1>{{ experience.name }}</h1>
     <div class="experienceContainerTotal">
       <img :src="pathImagenes" alt="">
@@ -63,5 +63,16 @@ watch(
 
 .experienceDescription{
   padding: 40px;
+}
+
+.experienceContainer{
+  border-radius: 10px;
+  box-shadow: 2px 2px 3px 2px;
+  margin:2% 10%;
+  padding: 3%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: rgb(212, 212, 212);
 }
 </style>
